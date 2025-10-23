@@ -56,24 +56,46 @@
     </div></div>
   </section>
 
-  <!-- s2: 题目1 输入 friends + 提示按钮 -->
-  <section id="s2" class="screen hide">
-    <div class="wrap"><div class="card">
-      <h2>题目 1</h2>
-      <p>第一个题就在这里。</p>
-      <p>你抬头看向街角的那家咖啡馆，<br/>是不是有点眼熟？<br/>似乎在某个熟悉的美剧里，你也见过它的身影。</p>
-      <p><strong>输入：7 个字母</strong></p>
-      <div class="row">
-        <input id="a1" class="input" placeholder="_______" aria-label="答案（7个字母）"/>
-        <button class="btn" onclick="check1()">提交</button>
-        <button class="btn" onclick="toggle('h1')">显示提示</button>
+<!-- s2: 题目1（friends）+ 多级提示/答案按钮 -->
+<section id="s2" class="screen hide">
+  <div class="wrap"><div class="card">
+    <h2>题目 1</h2>
+    <p>第一个题就在这里。</p>
+    <p>你抬头看向街角的那家咖啡馆，<br/>是不是有点眼熟？<br/>似乎在某个熟悉的美剧里，你也见过它的身影。</p>
+    <p><strong>输入：7 个字母</strong></p>
+
+    <div class="row">
+      <input id="a1" class="input" placeholder="_______" aria-label="答案（7个字母）"/>
+      <button class="btn" onclick="check1()">提交</button>
+
+      <!-- 新增：分级提示与答案按钮（原地展开/收起） -->
+      <button class="btn" onclick="toggle('h1_tip1')">显示提示 1</button>
+      <button class="btn" onclick="toggle('h1_tip2')">显示提示 2</button>
+      <button class="btn" onclick="toggle('h1_answer')">显示答案</button>
+    </div>
+
+    <!-- 提示 1 -->
+    <div id="h1_tip1" class="reveal muted">
+      提示 1：一部现象级美剧的名字（7 个字母）。
+    </div>
+
+    <!-- 提示 2 -->
+    <div id="h1_tip2" class="reveal muted">
+      提示 2：Taylor 曾和 Phoebe 的扮演者 Lisa Kudrow 同台唱过 <em>Smelly Cat</em>。
+    </div>
+
+    <!-- 答案（可选：一键填入） -->
+    <div id="h1_answer" class="reveal">
+      答案：<strong>FRIENDS</strong>（大小写不敏感）。
+      <div style="margin-top:6px" class="row">
+        <button class="btn" onclick="document.getElementById('a1').value='friends'">把答案填入输入框</button>
+        <button class="btn primary" onclick="check1()">提交并继续</button>
       </div>
-      <div id="h1" class="reveal muted">
-        提示：一部现象级美剧的名字；Taylor 唱过与这部剧有关的 <em>Smelly Cat</em>
-      </div>
-      <p id="m1" class="muted" style="min-height:1.4em;margin-top:6px"></p>
-    </div></div>
-  </section>
+    </div>
+
+    <p id="m1" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+  </div></div>
+</section>
 
   <!-- s3: reveal FRIENDS -->
   <section id="s3" class="screen hide">
