@@ -81,12 +81,12 @@
 
     <!-- 提示 2 -->
     <div id="h1_tip2" class="reveal muted">
-      提示 2：Taylor 曾和 Phoebe 的扮演者 Lisa Kudrow 同台唱过 <em>Smelly Cat</em>。
+      提示 2：Taylor 曾和演员 Lisa Kudrow 同台唱过该电视剧插曲 <em>Smelly Cat</em>。
     </div>
 
     <!-- 答案（可选：一键填入） -->
     <div id="h1_answer" class="reveal">
-      答案：<strong>FRIENDS</strong>（大小写不敏感）。
+      答案：<strong>FRIENDS</strong>
       <div style="margin-top:6px" class="row">
         <button class="btn" onclick="document.getElementById('a1').value='friends'">把答案填入输入框</button>
         <button class="btn primary" onclick="check1()">提交并继续</button>
@@ -97,56 +97,62 @@
   </div></div>
 </section>
 
-  <!-- s3: reveal FRIENDS -->
-  <section id="s3" class="screen hide">
-    <div class="wrap"><div class="card">
-      <h2>原来答案是 <span style="letter-spacing:.08em">FRIENDS</span>。</h2>
-      <div class="row" style="justify-content:flex-end">
-        <button class="btn" onclick="toggle('desc3')">显示介绍</button>
-      </div>
-      <div id="desc3" class="reveal">
-        <p>你站在这条街上，恍惚间好像看到了熟悉的开场镜头——六个朋友笑着从喷泉边跑过。其实，《老友记》的开场的外景镜头就是在这里取景，而室内场景都在洛杉矶的摄影棚里拍摄。</p>
-        <p>有趣的是，Taylor Swift 是《老友记》的忠实粉丝。她不仅多次在演唱会上提到这部剧，还和 Phoebe 的扮演者 Lisa Kudrow 一起在现场合唱过 <em>Smelly Cat</em>。</p>
-        <p>你抬头望着熟悉的窗台，仿佛听见那句温柔的承诺：</p>
-        <blockquote>“I’ll be there for you.” 🎶</blockquote>
-      </div>
-      <div style="margin-top:12px;display:flex;justify-content:flex-end">
-        <button class="btn primary" onclick="show('s4')">下一页 →</button>
-      </div>
-    </div></div>
-  </section>
+<!-- s3: reveal FRIENDS -->
+<section id="s3" class="screen hide">
+  <div class="wrap"><div class="card">
+    <h2>原来答案是 <span style="letter-spacing:.08em">FRIENDS</span>。</h2>
+    <div class="row" style="justify-content:flex-end">
+      <button class="btn" onclick="toggle('desc3')">显示介绍</button>
+    </div>
+    <div id="desc3" class="reveal">
+      <p>你站在这条街上，恍惚间好像看到了熟悉的开场镜头——六个朋友笑着从喷泉边跑过。其实，《老友记》的开场的外景镜头就是在这里取景，而室内场景都在洛杉矶的摄影棚里拍摄。</p>
 
-  <!-- s4 -->
-  <section id="s4" class="screen hide">
-    <div class="wrap"><div class="card">
-      <p>一阵微风吹过，书页自己翻开了下一章。几张旧照片从夹页里滑落出来——</p>
-      <p>她和 Karlie Kloss 大笑着走在西村的街头，</p>
-      <p>她和 Gigi Hadid 等模特从餐厅里走出来，</p>
-      <p>她和 Selena Gomez 穿着大衣和长靴轻松聚会。</p>
-      <p>她们像是一段纽约黄金时代的缩影，每一张照片都写着青春的名字。</p>
-      <p>你抬起头，街角的风轻轻掀起一页地址：<strong>53 Christopher St, New York, NY 10014</strong></p>
-      <p>看起来，下一个线索已经在前方等你。</p>
-      <div style="margin-top:12px;display:flex;justify-content:flex-end">
-        <button class="btn primary" onclick="show('s5')">下一页 →</button>
-      </div>
-    </div></div>
-  </section>
+      <!-- 图片：放在 /images/ 目录，或换成外链 URL -->
+      <figure style="margin:10px 0">
+        <img src="images/friends-building.jpg"
+             alt="《老友记》外景取景地附近的街角"
+             loading="lazy" decoding="async"
+             style="width:100%;height:auto;border-radius:12px;border:1px solid var(--border)">
+        <figcaption class="muted" style="margin-top:6px">《老友记》外景相关街角 · West Village</figcaption>
+      </figure>
 
-  <!-- s5: Via Carota 介绍按钮 -->
-  <section id="s5" class="screen hide">
-    <div class="wrap"><div class="card">
-      <h2>Via Carota</h2>
-      <div class="row" style="justify-content:flex-end">
-        <button class="btn" onclick="toggle('desc5')">显示介绍</button>
-      </div>
-      <div id="desc5" class="reveal">
-        <p>不远处，一家灯光温暖的意大利餐厅映入眼帘——<strong>Via Carota</strong>。橱窗里飘出橄榄油与松露的香气，木桌上摆着刚切好的面包和红酒。这里是 Taylor Swift 在纽约最常造访的餐厅之一，她常和朋友们在这里小聚。这些街拍里就像任何一个在西村享受平凡夜晚的女孩。</p>
-      </div>
-      <div style="margin-top:12px;display:flex;justify-content:flex-end">
-        <button class="btn primary" onclick="show('s6')">继续 →</button>
-      </div>
-    </div></div>
-  </section>
+      <p>有趣的是，Taylor Swift 是《老友记》的忠实粉丝。她不仅多次在演唱会上提到这部剧，还和 Phoebe 的扮演者 Lisa Kudrow 一起在现场合唱过 <em>Smelly Cat</em>。</p>
+      <p>你抬头望着熟悉的窗台，仿佛听见那句温柔的承诺：</p>
+      <blockquote>“I’ll be there for you.” 🎶</blockquote>
+    </div>
+    <div style="margin-top:12px;display:flex;justify-content:flex-end">
+      <button class="btn primary" onclick="show('s4')">下一页 →</button>
+    </div>
+  </div></div>
+</section>
+
+
+  <!-- s4（已合并 Via Carota，原地展开） -->
+<section id="s4" class="screen hide">
+  <div class="wrap"><div class="card">
+    <p>一阵微风吹过，书页自己翻开了下一章。几张旧照片从夹页里滑落出来——</p>
+    <p>她和 Karlie Kloss 大笑着走在西村的街头，</p>
+    <p>她和 Gigi Hadid 等模特从餐厅里走出来，</p>
+    <p>她和 Selena Gomez 穿着大衣和长靴轻松聚会。</p>
+    <p>她们像是一段纽约黄金时代的缩影，每一张照片都写着青春的名字。</p>
+    <p>你抬起头，街角的风轻轻掀起一页地址：<strong>53 Christopher St, New York, NY 10014</strong></p>
+    <p>看起来，下一个线索已经在前方等你。</p>
+
+    <!-- 新增：Via Carota 按钮（原地展开介绍） -->
+    <div class="row" style="justify-content:flex-end;margin-top:10px">
+      <button class="btn" onclick="toggle('vc_desc')">Via Carota</button>
+    </div>
+    <div id="vc_desc" class="reveal">
+      <p>不远处，一家灯光温暖的意大利餐厅映入眼帘——<strong>Via Carota</strong>。橱窗里飘出橄榄油与松露的香气，木桌上摆着刚切好的面包和红酒。这里是 Taylor Swift 在纽约最常造访的餐厅之一，她常和朋友们在这里小聚。这些街拍里就像任何一个在西村享受平凡夜晚的女孩。</p>
+    </div>
+
+    <!-- 注意：下一页改为 s6 -->
+    <div style="margin-top:12px;display:flex;justify-content:flex-end">
+      <button class="btn primary" onclick="show('s6')">继续 →</button>
+    </div>
+  </div></div>
+</section>
+
 
   <!-- s6: Q2 528 + 提示按钮 -->
   <section id="s6" class="screen hide">
