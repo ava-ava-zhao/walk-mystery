@@ -1,0 +1,303 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Walk Mystery · West Village · Taylor in NYC</title>
+  <style>
+    :root{--bg:#ffffff;--fg:#111827;--muted:#6b7280;--border:#e5e7eb;--card:#f8fafc;--primary:#7c3aed}
+    @media (prefers-color-scheme: dark){
+      :root{--bg:#0b1020;--fg:#e5e7eb;--muted:#9aa3b2;--border:#1f2937;--card:#111936}
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{margin:0;background:var(--bg);color:var(--fg);font-family:system-ui,-apple-system,Segoe UI,Roboto,"Helvetica Neue",Arial,"Noto Sans","PingFang SC","Microsoft YaHei",sans-serif;line-height:1.7}
+    .wrap{max-width:900px;margin:0 auto;padding:24px}
+    .card{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:24px}
+    header{position:sticky;top:0;backdrop-filter:blur(8px);background:color-mix(in srgb,var(--bg) 85%, transparent);border-bottom:1px solid var(--border)}
+    .btn{appearance:none;border:1px solid var(--border);background:var(--bg);color:var(--fg);padding:10px 16px;border-radius:12px;cursor:pointer;font-weight:700}
+    .btn.primary{background:var(--primary);color:#fff;border-color:rgba(0,0,0,.1)}
+    .btn:hover{border-color:var(--primary)}
+    .muted{color:var(--muted)}
+    .input{width:min(300px,80%);padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--fg);outline:none}
+    .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+    .hide{display:none !important}
+    .screen{opacity:0;transform:translateY(8px);transition:opacity .3s ease, transform .3s ease}
+    .screen.active{opacity:1;transform:none}
+    .shake{animation:shake .18s linear 2}
+    @keyframes shake{0%{transform:translateX(0)}25%{transform:translateX(-6px)}50%{transform:translateX(6px)}75%{transform:translateX(-3px)}100%{transform:translateX(0)}}
+    blockquote{margin:12px 0;padding:8px 12px;border-left:3px solid var(--border);background:rgba(125,125,125,.08)}
+    h1,h2,h3{margin:0 0 8px 0}
+    .reveal{display:none;margin-top:8px}
+    .navline{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:14px;flex-wrap:wrap}
+    .spacer{flex:1}
+  </style>
+</head>
+<body>
+  <header>
+    <div class="wrap" style="display:flex;gap:10px;align-items:center;">
+      <strong>Walk Mystery</strong>
+      <span class="muted" style="margin-left:auto">West Village · Story Puzzle</span>
+    </div>
+  </header>
+
+  <!-- s1 -->
+  <section id="s1" class="screen active">
+    <div class="wrap"><div class="card">
+      <p>纽约天灰蒙蒙的……隐藏在纽约街头的追寻。</p>
+      <div class="navline">
+        <span></span>
+        <button class="btn primary" onclick="show('s2')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- s2 -->
+  <section id="s2" class="screen hide">
+    <div class="wrap"><div class="card">
+      <h2>题目 1</h2>
+      <p>输入 7 个字母。</p>
+      <div class="row">
+        <input id="a1" class="input" placeholder="_______"/>
+        <button class="btn" onclick="check1()">提交</button>
+        <button class="btn" onclick="toggle('h1')">显示提示</button>
+      </div>
+      <div id="h1" class="reveal muted">提示：Friends / Smelly Cat</div>
+      <p id="m1" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s3')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- For brevity in this runnable sample, the rest screens are simplified but keep the same nav and inline reveals concept. -->
+  <section id="s3" class="screen hide">
+    <div class="wrap"><div class="card">
+      <h2>FRIENDS</h2>
+      <button class="btn" onclick="toggle('desc3')">显示介绍</button>
+      <div id="desc3" class="reveal"><p>介绍文本……</p></div>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s4')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s4" class="screen hide">
+    <div class="wrap"><div class="card">
+      <p>线索前进。</p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s5')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s5" class="screen hide">
+    <div class="wrap"><div class="card">
+      <h2>Via Carota</h2>
+      <button class="btn" onclick="toggle('desc5')">显示介绍</button>
+      <div id="desc5" class="reveal"><p>介绍文本……</p></div>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s6')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s6" class="screen hide">
+    <div class="wrap"><div class="card">
+      <h2>题目 2</h2>
+      <div class="row">
+        <input id="a2" class="input" placeholder="___"/>
+        <button class="btn" onclick="check2()">提交</button>
+        <button class="btn" onclick="toggle('h2')">显示提示</button>
+      </div>
+      <div id="h2" class="reveal muted">提示：528</div>
+      <p id="m2" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s7')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s7" class="screen hide">
+    <div class="wrap"><div class="card">
+      <button class="btn" onclick="toggle('desc7')">显示介绍</button>
+      <div id="desc7" class="reveal"><p>Stonewall 介绍……</p></div>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s8')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s8" class="screen hide">
+    <div class="wrap"><div class="card">
+      <h2>题目 3</h2>
+      <div class="row">
+        <input id="a3" class="input" placeholder="专辑名（英文）"/>
+        <button class="btn" onclick="check3()">提交</button>
+        <button class="btn" onclick="toggle('h3')">显示提示</button>
+      </div>
+      <div id="h3" class="reveal muted">提示：reputation</div>
+      <p id="m3" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s9')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s9" class="screen hide">
+    <div class="wrap"><div class="card">
+      <button class="btn" onclick="toggle('desc9')">显示介绍</button>
+      <div id="desc9" class="reveal"><p>Electric Lady 介绍……</p></div>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s10')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s10" class="screen hide">
+    <div class="wrap"><div class="card">
+      <h2>题目 4</h2>
+      <div class="row">
+        <input id="a4" class="input" placeholder="___"/>
+        <button class="btn" onclick="check4()">提交</button>
+        <button class="btn" onclick="toggle('h4')">显示提示</button>
+      </div>
+      <div id="h4" class="reveal muted">提示：nyu</div>
+      <p id="m4" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s11')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s11" class="screen hide">
+    <div class="wrap"><div class="card">
+      <button class="btn" onclick="toggle('desc11')">显示介绍</button>
+      <div id="desc11" class="reveal"><p>WSP/NYU 介绍……</p></div>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s12')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s12" class="screen hide">
+    <div class="wrap"><div class="card">
+      <h2>题目 5</h2>
+      <div class="row">
+        <input id="a5" class="input" placeholder="输入 A/B/C/D 或学院名"/>
+        <button class="btn" onclick="check5()">提交</button>
+        <button class="btn" onclick="toggle('h5')">显示提示</button>
+      </div>
+      <div id="h5" class="reveal muted">提示：Tisch</div>
+      <p id="m5" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s13')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s13" class="screen hide">
+    <div class="wrap"><div class="card">
+      <button class="btn" onclick="toggle('desc13')">显示介绍</button>
+      <div id="desc13" class="reveal"><p>NYU 毕业演讲……</p></div>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s14')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s14" class="screen hide">
+    <div class="wrap"><div class="card">
+      <h2>题目 6</h2>
+      <button class="btn" onclick="toggle('desc14')">显示介绍</button>
+      <div id="desc14" class="reveal"><p>Housing Works 介绍……</p></div>
+      <div class="row">
+        <input id="a6" class="input" placeholder="8 个字母"/>
+        <button class="btn" onclick="check6()">提交</button>
+        <button class="btn" onclick="toggle('h6')">显示提示</button>
+        <button class="btn" onclick="skip6()">跳过</button>
+      </div>
+      <div id="h6" class="reveal muted">提示：往下看，找找她的名字</div>
+      <p id="m6" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s15')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s15" class="screen hide">
+    <div class="wrap"><div class="card">
+      <button class="btn" onclick="toggle('desc15')">显示介绍</button>
+      <div id="desc15" class="reveal"><p>ATW 短片结尾……</p></div>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn primary" onclick="show('s16')">下一关 →</button>
+      </div>
+    </div></div>
+  </section>
+
+  <section id="s16" class="screen hide">
+    <div class="wrap"><div class="card">
+      <blockquote>“Welcome to New York, it’s been waiting for you.” 🎶</blockquote>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一关</button>
+        <div class="spacer"></div>
+        <button class="btn" onclick="show('s1')">回到开头</button>
+      </div>
+    </div></div>
+  </section>
+
+  <script>
+    const order = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16'];
+    let currentId = 's1';
+    function show(id){
+      order.forEach(x=>{ const el = document.getElementById(x); if(el){ el.classList.add('hide'); el.classList.remove('active'); } });
+      const t = document.getElementById(id);
+      t.classList.remove('hide'); requestAnimationFrame(()=> t.classList.add('active'));
+      window.scrollTo({top:0, behavior:'smooth'});
+      location.hash = id;
+      currentId = id;
+      try{ localStorage.setItem('wm_progress', id); }catch(e){}
+    }
+    function back(){ const idx = order.indexOf(currentId); if(idx>0) show(order[idx-1]); }
+    function toggle(id){ const el = document.getElementById(id); if(el){ el.style.display = (el.style.display==='block')?'none':'block'; } }
+    function setMsg(id, t){ const el = document.getElementById(id); if(el) el.textContent = t; }
+    function shakeEl(id){ const el = document.getElementById(id); if(!el) return; el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
+    function check1(){ const v=(document.getElementById('a1').value||'').trim().toLowerCase(); if(v.length!==7){setMsg('m1','提示：7 个字母');shakeEl('a1');return;} if(v==='friends'){setMsg('m1','');show('s3');} else {setMsg('m1','再想想');shakeEl('a1');} }
+    function check2(){ const v=(document.getElementById('a2').value||'').trim(); if(!/^\d{3}$/.test(v)){setMsg('m2','3 位数字');shakeEl('a2');return;} if(v==='528'){setMsg('m2','');show('s7');} else {setMsg('m2','不对');shakeEl('a2');} }
+    function check3(){ const v=(document.getElementById('a3').value||'').trim().toLowerCase(); if(!v){setMsg('m3','请输入');shakeEl('a3');return;} if(v==='reputation'){setMsg('m3','');show('s9');} else {setMsg('m3','提示：第六张');shakeEl('a3');} }
+    function check4(){ const v=(document.getElementById('a4').value||'').trim().toLowerCase(); if(v.length!==3){setMsg('m4','3 个字母');shakeEl('a4');return;} if(v==='nyu'){setMsg('m4','');show('s11');} else {setMsg('m4','把名字首字母连起来');shakeEl('a4');} }
+    function check5(){ const v=(document.getElementById('a5').value||'').trim().toLowerCase(); if(!v){setMsg('m5','请输入');shakeEl('a5');return;} if(v==='b' || v.includes('tisch')){setMsg('m5','');show('s13');} else {setMsg('m5','再想想');shakeEl('a5');} }
+    function check6(){ const v=(document.getElementById('a6').value||'').trim(); if(v.length!==8){setMsg('m6','需要 8 个字母，或点跳过');shakeEl('a6');return;} setMsg('m6','');show('s15'); }
+    function skip6(){ show('s15'); }
+    window.addEventListener('load', ()=>{ const saved=localStorage.getItem('wm_progress'); const h=(location.hash||'').replace('#',''); const ok=order.includes(h); show(ok?h:(saved||'s1')); });
+  </script>
+</body>
+</html>
