@@ -1,10 +1,9 @@
-
 <!doctype html>
 <html lang="zh-CN">
 <head>
   <meta charset="utf-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <title>Walk Mystery · West Village · Taylor in NYC</title>
+  <title>Walk Mystery · Integrated</title>
   <style>
     :root{--bg:#ffffff;--fg:#111827;--muted:#6b7280;--border:#e5e7eb;--card:#f8fafc;--primary:#7c3aed}
     @media (prefers-color-scheme: dark){
@@ -20,7 +19,7 @@
     .btn.primary{background:var(--primary);color:#fff;border-color:rgba(0,0,0,.1)}
     .btn:hover{border-color:var(--primary)}
     .muted{color:var(--muted)}
-    .input{width:min(300px,80%);padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--fg);outline:none}
+    .input{width:min(320px,80%);padding:10px 12px;border:1px solid var(--border);border-radius:12px;background:var(--bg);color:var(--fg);outline:none}
     .row{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
     .hide{display:none !important}
     .screen{opacity:0;transform:translateY(8px);transition:opacity .3s ease, transform .3s ease}
@@ -30,14 +29,16 @@
     blockquote{margin:12px 0;padding:8px 12px;border-left:3px solid var(--border);background:rgba(125,125,125,.08)}
     h1,h2,h3{margin:0 0 8px 0}
     .reveal{display:none;margin-top:8px}
-    .spacer{height:6px}
+    .navline{display:flex;gap:10px;justify-content:space-between;align-items:center;margin-top:14px;flex-wrap:wrap}
+    figure{margin:10px 0}
+    img{max-width:100%;height:auto;border-radius:12px;border:1px solid var(--border)}
   </style>
 </head>
 <body>
   <header>
     <div class="wrap" style="display:flex;gap:10px;align-items:center;">
       <strong>Walk Mystery</strong>
-      <span class="muted" style="margin-left:auto">West Village · Story Puzzle</span>
+      <span class="muted" style="margin-left:auto">West Village · 整合版</span>
     </div>
   </header>
 
@@ -46,36 +47,44 @@
     <div class="wrap"><div class="card">
       <p>纽约天灰蒙蒙的，街上还残留着昨夜的雨气。你一边拎着相机一边快步穿过 West Village 的狭窄街道，心里反复默念着地址——<strong>90 Bedford Street</strong>。这是你第一次接下采访这样级别的对象：Taylor Swift 的造型师。这次机会也许能改变你的职业生涯。</p>
       <p>推开那家小咖啡馆的门，风铃轻轻一响，空气里弥漫着焦糖拿铁的香气。可你环顾四周，却没看到她的身影。桌上只剩下两个空杯和一张纸条。就在你转身准备给她发消息时，门口的一丝金属光吸引了你的目光——那是一本旧旧的歌词本，被雨水打湿的封面已经褪色，边角卷起。</p>
-      <p>你弯腰捡起它，翻开第一页，只见上面写着：</p>
       <blockquote>“如果你真想了解 Taylor，就顺着纽约的街道走下去。每一站，都是我留给你的答案。”</blockquote>
-      <p>雨声在窗外轻敲，你的心也随之加快。</p>
-      <p>显然，这不会是一场普通的采访——而是一段隐藏在纽约街头的追寻。</p>
-      <div style="margin-top:12px;display:flex;justify-content:flex-end">
-        <button class="btn primary" onclick="show('s2')">点击继续</button>
+      <div class="navline">
+        <span></span>
+        <button class="btn primary" onclick="show('s2')">下一题 →</button>
       </div>
     </div></div>
   </section>
 
-  <!-- s2: 题目1 输入 friends + 提示按钮 -->
+  <!-- s2 -->
   <section id="s2" class="screen hide">
     <div class="wrap"><div class="card">
       <h2>题目 1</h2>
-      <p>第一个题就在这里。</p>
-      <p>你抬头看向街角的那家咖啡馆，<br/>是不是有点眼熟？<br/>似乎在某个熟悉的美剧里，你也见过它的身影。</p>
+      <p>你抬头看向街角的那家咖啡馆，似乎在某个熟悉的美剧里也见过它。</p>
       <p><strong>输入：7 个字母</strong></p>
       <div class="row">
         <input id="a1" class="input" placeholder="_______" aria-label="答案（7个字母）"/>
         <button class="btn" onclick="check1()">提交</button>
-        <button class="btn" onclick="toggle('h1')">显示提示</button>
+        <button class="btn" onclick="toggle('h1_tip1')">显示提示 1</button>
+        <button class="btn" onclick="toggle('h1_tip2')">显示提示 2</button>
+        <button class="btn" onclick="toggle('h1_answer')">显示答案</button>
       </div>
-      <div id="h1" class="reveal muted">
-        提示：一部现象级美剧的名字；Taylor 唱过与这部剧有关的 <em>Smelly Cat</em>
+      <div id="h1_tip1" class="reveal muted">提示 1：一部现象级美剧的名字（7 个字母）。</div>
+      <div id="h1_tip2" class="reveal muted">提示 2：Taylor 与 Lisa Kudrow 曾合唱 <em>Smelly Cat</em>。</div>
+      <div id="h1_answer" class="reveal">答案：<strong>FRIENDS</strong>。
+        <div class="row" style="margin-top:6px">
+          <button class="btn" onclick="document.getElementById('a1').value='friends'">填入输入框</button>
+          <button class="btn primary" onclick="check1()">提交并继续</button>
+        </div>
       </div>
       <p id="m1" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s3')">下一题 →</button>
+      </div>
     </div></div>
   </section>
 
-  <!-- s3: reveal FRIENDS -->
+  <!-- s3 -->
   <section id="s3" class="screen hide">
     <div class="wrap"><div class="card">
       <h2>原来答案是 <span style="letter-spacing:.08em">FRIENDS</span>。</h2>
@@ -84,17 +93,21 @@
       </div>
       <div id="desc3" class="reveal">
         <p>你站在这条街上，恍惚间好像看到了熟悉的开场镜头——六个朋友笑着从喷泉边跑过。其实，《老友记》的开场的外景镜头就是在这里取景，而室内场景都在洛杉矶的摄影棚里拍摄。</p>
+        <figure>
+          <img src="images/friends-building.jpg" alt="《老友记》外景取景地附近的街角" loading="lazy" decoding="async">
+          <figcaption class="muted">《老友记》外景相关街角 · West Village</figcaption>
+        </figure>
         <p>有趣的是，Taylor Swift 是《老友记》的忠实粉丝。她不仅多次在演唱会上提到这部剧，还和 Phoebe 的扮演者 Lisa Kudrow 一起在现场合唱过 <em>Smelly Cat</em>。</p>
-        <p>你抬头望着熟悉的窗台，仿佛听见那句温柔的承诺：</p>
         <blockquote>“I’ll be there for you.” 🎶</blockquote>
       </div>
-      <div style="margin-top:12px;display:flex;justify-content:flex-end">
-        <button class="btn primary" onclick="show('s4')">下一页 →</button>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s4')">下一题 →</button>
       </div>
     </div></div>
   </section>
 
-  <!-- s4 -->
+  <!-- s4 merged -->
   <section id="s4" class="screen hide">
     <div class="wrap"><div class="card">
       <p>一阵微风吹过，书页自己翻开了下一章。几张旧照片从夹页里滑落出来——</p>
@@ -104,48 +117,41 @@
       <p>她们像是一段纽约黄金时代的缩影，每一张照片都写着青春的名字。</p>
       <p>你抬起头，街角的风轻轻掀起一页地址：<strong>53 Christopher St, New York, NY 10014</strong></p>
       <p>看起来，下一个线索已经在前方等你。</p>
-      <div style="margin-top:12px;display:flex;justify-content:flex-end">
-        <button class="btn primary" onclick="show('s5')">下一页 →</button>
-      </div>
-    </div></div>
-  </section>
 
-  <!-- s5: Via Carota 介绍按钮 -->
-  <section id="s5" class="screen hide">
-    <div class="wrap"><div class="card">
-      <h2>Via Carota</h2>
-      <div class="row" style="justify-content:flex-end">
-        <button class="btn" onclick="toggle('desc5')">显示介绍</button>
+      <div class="row" style="justify-content:flex-end;margin-top:10px">
+        <button class="btn" onclick="toggle('vc_desc')">Via Carota</button>
       </div>
-      <div id="desc5" class="reveal">
+      <div id="vc_desc" class="reveal">
         <p>不远处，一家灯光温暖的意大利餐厅映入眼帘——<strong>Via Carota</strong>。橱窗里飘出橄榄油与松露的香气，木桌上摆着刚切好的面包和红酒。这里是 Taylor Swift 在纽约最常造访的餐厅之一，她常和朋友们在这里小聚。这些街拍里就像任何一个在西村享受平凡夜晚的女孩。</p>
       </div>
-      <div style="margin-top:12px;display:flex;justify-content:flex-end">
+
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
         <button class="btn primary" onclick="show('s6')">继续 →</button>
       </div>
     </div></div>
   </section>
 
-  <!-- s6: Q2 528 + 提示按钮 -->
+  <!-- s6 -->
   <section id="s6" class="screen hide">
     <div class="wrap"><div class="card">
       <h2>题目 2</h2>
-      <p>你沿着 Bleecker Street 走向街角，夜色正慢慢落下。远处传来人群的笑声与音乐，霓虹灯的倒影在湿漉漉的路面上闪烁。</p>
       <blockquote>结合你面前的文字，解出一个三位数密码。FYI，每个字母都很重要‼️</blockquote>
-      <p><strong>输入：三位数</strong></p>
       <div class="row">
         <input id="a2" class="input" placeholder="___" aria-label="三位数字"/>
         <button class="btn" onclick="check2()">提交</button>
         <button class="btn" onclick="toggle('h2')">显示提示</button>
       </div>
-      <div id="h2" class="reveal muted">
-        提示：数一数它们出现了几次；加上顶上的字试试看；FYI 三个字母分别出现了几次？
-      </div>
+      <div id="h2" class="reveal muted">提示：数一数它们出现了几次；加上顶上的字试试看；FYI 三个字母分别出现了几次？</div>
       <p id="m2" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s7')">下一题 →</button>
+      </div>
     </div></div>
   </section>
 
-  <!-- s7: Stonewall 介绍按钮 -->
+  <!-- s7 -->
   <section id="s7" class="screen hide">
     <div class="wrap"><div class="card">
       <p><strong>F → 5，Y → 2，I → 8。</strong> 你在纸上写下那串数字：<strong>528</strong>。</p>
@@ -153,16 +159,17 @@
         <button class="btn" onclick="toggle('desc7')">显示介绍</button>
       </div>
       <div id="desc7" class="reveal">
-        <p>街头的风忽然带来一阵歌声……你抬起头，彩虹旗在风中飞扬。纪念碑旁的铭牌提醒你：1969 年夏天，这里的人第一次集体站出来反抗歧视，石墙运动由此成为 LGBTQ+ 平权运动的重要起点。2019 年，整座城市在此庆祝纪念——Lady Gaga 在石墙前致辞，Taylor Swift 也在这里唱起《Shake It Off》，把街道变成拥抱自由与爱的舞台。</p>
+        <p>彩虹旗在风中飞扬。1969 年夏天的石墙运动成为 LGBTQ+ 平权运动的重要起点；2019 年，Lady Gaga 在此致辞，Taylor 在此演唱《Shake It Off》。</p>
+        <p>一串手写坐标显现：<strong>52 W 8th</strong>。继续前往：<strong>52 W 8th Street</strong>。</p>
       </div>
-      <p>一串手写坐标显现：<strong>52 W 8th</strong>。继续前往：<strong>52 W 8th Street</strong>。</p>
-      <div style="margin-top:12px;display:flex;justify-content:flex-end">
-        <button class="btn primary" onclick="show('s8')">继续 →</button>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s8')">下一题 →</button>
       </div>
     </div></div>
   </section>
 
-  <!-- s8: Q3 album reputation + 提示按钮 -->
+  <!-- s8 -->
   <section id="s8" class="screen hide">
     <div class="wrap"><div class="card">
       <h2>题目 3</h2>
@@ -172,31 +179,33 @@
         <button class="btn" onclick="check3()">提交</button>
         <button class="btn" onclick="toggle('h3')">显示提示</button>
       </div>
-      <div id="h3" class="reveal muted">
-        提示：数字和颜色有关；第六张专辑
-      </div>
+      <div id="h3" class="reveal muted">提示：数字和颜色有关；第六张专辑</div>
       <p id="m3" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s9')">下一题 →</button>
+      </div>
     </div></div>
   </section>
 
-  <!-- s9: Electric Lady 介绍按钮 -->
+  <!-- s9 -->
   <section id="s9" class="screen hide">
     <div class="wrap"><div class="card">
-      <p>你在键盘上输入 <strong>Reputation</strong>，下一秒，门口的灯牌微微闪动，仿佛在回应。</p>
+      <p>你在键盘上输入 <strong>Reputation</strong>，下一秒，门口的灯牌微微闪动。</p>
       <div class="row" style="justify-content:flex-end">
         <button class="btn" onclick="toggle('desc9')">显示介绍</button>
       </div>
       <div id="desc9" class="reveal">
-        <p>你抬头望向这栋建筑：<strong>Electric Lady Studios</strong>。这座由 Jimi Hendrix 于 1970 年打造的录音室，被称作纽约的音乐圣殿。如今，这里成了 Taylor Swift 与制作人 Jack Antonoff 的创作基地，从 <em>Lover</em> 到 <em>Midnights</em>，许多旋律都在这里诞生。</p>
-        <p>风从第六大道（6th Avenue）方向吹来，仿佛在暗示下一步的方向……</p>
+        <p>你抬头望向这栋建筑：<strong>Electric Lady Studios</strong>。这座由 Jimi Hendrix 于 1970 年打造的录音室，被称作纽约的音乐圣殿。如今，这里成了 Taylor Swift 与制作人 Jack Antonoff 的创作基地，从 <em>Lover</em> 到 <em>Midnights</em> 都在此孕育。</p>
       </div>
-      <div style="margin-top:12px;display:flex;justify-content:flex-end">
-        <button class="btn primary" onclick="show('s10')">继续 →</button>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s10')">下一题 →</button>
       </div>
     </div></div>
   </section>
 
-  <!-- s10: Q4 NYU + 提示按钮 -->
+  <!-- s10 -->
   <section id="s10" class="screen hide">
     <div class="wrap"><div class="card">
       <h2>题目 4</h2>
@@ -206,14 +215,16 @@
         <button class="btn" onclick="check4()">提交</button>
         <button class="btn" onclick="toggle('h4')">显示提示</button>
       </div>
-      <div id="h4" class="reveal muted">
-        提示：并不是所有人都说了真话，试着把他们的名字连起来
-      </div>
+      <div id="h4" class="reveal muted">提示：并不是所有人都说了真话，试着把他们的名字连起来 → N Y U</div>
       <p id="m4" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s11')">下一题 →</button>
+      </div>
     </div></div>
   </section>
 
-  <!-- s11: WSP/NYU 介绍按钮 -->
+  <!-- s11 -->
   <section id="s11" class="screen hide">
     <div class="wrap"><div class="card">
       <p>你把他们的首字母写在歌词本上：<strong>N Y U</strong>。</p>
@@ -221,19 +232,19 @@
         <button class="btn" onclick="toggle('desc11')">显示介绍</button>
       </div>
       <div id="desc11" class="reveal">
-        <p>Washington Square Park（华盛顿广场公园）位于曼哈顿下城格林尼治村的中心，拱门建于 1892 年，为纪念乔治·华盛顿而建，后来成为无数学子与街头艺术家的地标。公园周围即 NYU 主校区，学术与城市在这里交织。</p>
+        <p>Washington Square Park 与 NYU 主校区交织，拱门建于 1892 年，成为无数学子与街头艺术家的地标。</p>
       </div>
-      <div class="row" style="margin-top:12px">
-        <button class="btn" onclick="show('s12')">前往下一题 →</button>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s12')">下一题 →</button>
       </div>
     </div></div>
   </section>
 
-  <!-- s12: Q5 + 提示按钮 -->
+  <!-- s12 -->
   <section id="s12" class="screen hide">
     <div class="wrap"><div class="card">
       <h2>题目 5</h2>
-      <p>“The Future of the Music Streaming Economy” 要开始了！她们到底是去哪儿？</p>
       <ol>
         <li>A. Stern 商学院</li>
         <li>B. Tisch School of the Arts</li>
@@ -245,30 +256,33 @@
         <button class="btn" onclick="check5()">提交</button>
         <button class="btn" onclick="toggle('h5')">显示提示</button>
       </div>
-      <div id="h5" class="reveal muted">
-        提示：音乐 · 创意 · 艺术的交汇之处
-      </div>
+      <div id="h5" class="reveal muted">提示：音乐 · 创意 · 艺术的交汇之处</div>
       <p id="m5" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s13')">下一题 →</button>
+      </div>
     </div></div>
   </section>
 
-  <!-- s13: NYU/Tisch 介绍按钮 -->
+  <!-- s13 -->
   <section id="s13" class="screen hide">
     <div class="wrap"><div class="card">
-      <p>你脑海里闪过那句关键词—— “Music Streaming Economy”。</p>
+      <p>你脑海里闪过关键词—— “Music Streaming Economy”。</p>
       <div class="row" style="justify-content:flex-end">
         <button class="btn" onclick="toggle('desc13')">显示介绍</button>
       </div>
       <div id="desc13" class="reveal">
-        <p>Tisch School of the Arts 的门口贴着学生展演的海报，走廊里传来钢琴练习声与讨论。你在纪念品店里听到她 2022 年在 Yankee Stadium 的毕业致辞录音，NYU 授予她荣誉艺术学博士学位。</p>
+        <p>Tisch School of the Arts 的门口贴着学生展演海报。2022 年 5 月 18 日，Taylor 在 Yankee Stadium 接受 NYU 授予的荣誉艺术学博士并致辞。</p>
       </div>
-      <div class="row" style="margin-top:12px">
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
         <button class="btn primary" onclick="show('s14')">去 Housing Works 书店 →</button>
       </div>
     </div></div>
   </section>
 
-  <!-- s14: Q6 + 提示按钮 + 介绍按钮 -->
+  <!-- s14 -->
   <section id="s14" class="screen hide">
     <div class="wrap"><div class="card">
       <h2>题目 6</h2>
@@ -276,7 +290,7 @@
         <button class="btn" onclick="toggle('desc14')">显示介绍</button>
       </div>
       <div id="desc14" class="reveal">
-        <p>拐过街角，你终于看见那块熟悉的红色招牌——<strong>Housing Works Bookstore</strong>。它隶属于非营利组织 Housing Works，书籍来自公众捐赠，收入用于帮助纽约无家可归者与 HIV/AIDS 患者重建生活。</p>
+        <p><strong>Housing Works Bookstore</strong>：非营利书店，书籍来自公众捐赠，收入用于帮助无家可归者与 HIV/AIDS 患者。</p>
       </div>
       <p><strong>哪个 section 最吸引你的目光？</strong></p>
       <div class="row">
@@ -285,69 +299,68 @@
         <button class="btn" onclick="toggle('h6')">显示提示</button>
         <button class="btn" onclick="skip6()">跳过</button>
       </div>
-      <div id="h6" class="reveal muted">
-        提示：往下看，找找她的名字
-      </div>
+      <div id="h6" class="reveal muted">提示：往下看，找找她的名字</div>
       <p id="m6" class="muted" style="min-height:1.4em;margin-top:6px"></p>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s15')">下一题 →</button>
+      </div>
     </div></div>
   </section>
 
-  <!-- s15: All Too Well 介绍按钮 -->
+  <!-- s15 -->
   <section id="s15" class="screen hide">
     <div class="wrap"><div class="card">
       <div class="row" style="justify-content:flex-end">
         <button class="btn" onclick="toggle('desc15')">显示介绍</button>
       </div>
       <div id="desc15" class="reveal">
-        <p>你抬头望去，周围的场景和 <em>All Too Well: The Short Film</em> 的最后一幕重合——书架、签书会、微笑。Taylor Swift 在此担任导演、编剧与主演，影片首映后，这家书店成为歌迷心中的“朝圣地”。</p>
+        <p><em>All Too Well: The Short Film</em> 的尾声在 Housing Works Bookstore 取景，成为粉丝“朝圣地”。</p>
       </div>
-      <div class="row" style="margin-top:12px">
-        <button class="btn primary" onclick="show('s16')">继续 →</button>
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
+        <button class="btn primary" onclick="show('s16')">下一题 →</button>
       </div>
     </div></div>
   </section>
 
-  <!-- s16 结尾 -->
+  <!-- s16 -->
   <section id="s16" class="screen hide">
     <div class="wrap"><div class="card">
       <blockquote>“Welcome to New York, it’s been waiting for you.” 🎶</blockquote>
       <p class="muted">游戏到这里告一段落，但城市的故事仍在继续。💜</p>
-      <div class="row">
+      <div class="navline">
+        <button class="btn" onclick="back()">← 上一题</button>
         <button class="btn" onclick="show('s1')">回到开头</button>
       </div>
     </div></div>
   </section>
 
   <script>
-    // Show/hide screen
+    const order = ['s1','s2','s3','s4','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16'];
+    let currentId = 's1';
+
     function show(id){
-      const ids = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16'];
-      ids.forEach(x=>{ const el = document.getElementById(x); if(el){ el.classList.add('hide'); el.classList.remove('active'); } });
+      order.forEach(x=>{ const el = document.getElementById(x); if(el){ el.classList.add('hide'); el.classList.remove('active'); } });
       const t = document.getElementById(id);
       t.classList.remove('hide'); requestAnimationFrame(()=> t.classList.add('active'));
       window.scrollTo({top:0, behavior:'smooth'});
       location.hash = id;
+      currentId = id;
       try{ localStorage.setItem('wm_progress', id); }catch(e){}
     }
-    window.addEventListener('load', ()=>{
-      const saved = localStorage.getItem('wm_progress');
-      const h = (location.hash||'').replace('#','');
-      const ok = ['s1','s2','s3','s4','s5','s6','s7','s8','s9','s10','s11','s12','s13','s14','s15','s16'].includes(h);
-      show(ok ? h : (saved || 's1'));
-    });
-
-    // Toggle helper
+    function back(){
+      const i = order.indexOf(currentId);
+      if (i > 0) show(order[i-1]);
+    }
     function toggle(id){
       const el = document.getElementById(id);
       if(!el) return;
-      el.style.display = (el.style.display === 'block') ? 'none' : 'block';
+      el.style.display = (el.style.display==='block') ? 'none' : 'block';
     }
-
-    // Messages + shakes
     function setMsg(id, text){ const el = document.getElementById(id); if(el) el.textContent = text; }
     function shakeEl(id){ const el = document.getElementById(id); if(!el) return; el.classList.remove('shake'); void el.offsetWidth; el.classList.add('shake'); }
 
-    // Puzzle checks
     function check1(){
       const v = (document.getElementById('a1').value||'').trim().toLowerCase();
       if (v.length !== 7){ setMsg('m1','提示：答案是 7 个字母'); shakeEl('a1'); return; }
@@ -356,7 +369,7 @@
     }
     function check2(){
       const v = (document.getElementById('a2').value||'').trim();
-      if (!/^\d{3}$/.test(v)){ setMsg('m2','请输入 3 位数字'); shakeEl('a2'); return; }
+      if (!/^\\d{3}$/.test(v)){ setMsg('m2','请输入 3 位数字'); shakeEl('a2'); return; }
       if (v === '528'){ setMsg('m2',''); show('s7'); }
       else { setMsg('m2','不太对，再试一次'); shakeEl('a2'); }
     }
@@ -384,6 +397,13 @@
       setMsg('m6',''); show('s15');
     }
     function skip6(){ show('s15'); }
+
+    window.addEventListener('load', ()=>{
+      const saved = localStorage.getItem('wm_progress');
+      const h = (location.hash||'').replace('#','');
+      const ok = order.includes(h);
+      show(ok ? h : (saved || 's1'));
+    });
   </script>
 </body>
 </html>
